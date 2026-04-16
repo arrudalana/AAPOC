@@ -1,33 +1,44 @@
 import { Brain, Stethoscope, Scale, Smile } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
 
-const services = [
+const professionals = [
   {
     icon: Brain,
     title: "Psicologia",
-    description: "Acompanhamento psicológico para pacientes e familiares, oferecendo suporte emocional durante o tratamento.",
-    color: "bg-hope/10 text-hope",
-    iconBg: "bg-hope",
+    description:
+      "Acompanhamento psicológico para pacientes e familiares, oferecendo suporte emocional durante o tratamento.",
+    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=700&fit=crop",
+    color: "from-hope/80 to-hope/40",
   },
   {
     icon: Stethoscope,
     title: "Fisioterapia",
-    description: "Reabilitação física especializada para melhorar a qualidade de vida dos pacientes oncológicos.",
-    color: "bg-primary/10 text-primary",
-    iconBg: "bg-primary",
+    description:
+      "Reabilitação física especializada para melhorar a qualidade de vida dos pacientes oncológicos.",
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=700&fit=crop",
+    color: "from-primary/80 to-primary/40",
   },
   {
     icon: Smile,
     title: "Odontologia",
-    description: "Cuidados odontológicos essenciais para pacientes em tratamento quimioterápico e radioterápico.",
-    color: "bg-secondary/10 text-secondary",
-    iconBg: "bg-secondary",
+    description:
+      "Cuidados odontológicos essenciais para pacientes em tratamento quimioterápico e radioterápico.",
+    image: "https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?w=600&h=700&fit=crop",
+    color: "from-secondary/80 to-secondary/40",
   },
   {
     icon: Scale,
     title: "Jurídico",
-    description: "Orientação jurídica sobre direitos do paciente oncológico, benefícios previdenciários e assistenciais.",
-    color: "bg-accent/10 text-accent-foreground",
-    iconBg: "bg-accent",
+    description:
+      "Orientação jurídica sobre direitos do paciente oncológico, benefícios previdenciários e assistenciais.",
+    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&h=700&fit=crop",
+    color: "from-accent/80 to-accent/40",
   },
 ];
 
@@ -36,7 +47,9 @@ const ServicesSection = () => {
     <section id="servicos" className="py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <span className="text-sm font-bold text-primary uppercase tracking-widest">Equipe Multidisciplinar</span>
+          <span className="text-sm font-bold text-primary uppercase tracking-widest">
+            Equipe Multidisciplinar
+          </span>
           <h2 className="text-3xl md:text-5xl font-display font-black text-foreground mt-2">
             Nossos Profissionais
           </h2>
@@ -45,19 +58,34 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {services.map((s) => (
-            <div
-              key={s.title}
-              className="bg-card rounded-2xl p-6 shadow-sm border border-border hover:shadow-xl transition-all hover:-translate-y-2 group"
-            >
-              <div className={`w-14 h-14 ${s.iconBg} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg`}>
-                <s.icon className="w-7 h-7 text-primary-foreground" />
-              </div>
-              <h3 className="text-xl font-display font-bold text-foreground">{s.title}</h3>
-              <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{s.description}</p>
-            </div>
-          ))}
+        <div className="max-w-5xl mx-auto px-12">
+          <Carousel opts={{ align: "start", loop: true }} className="w-full">
+            <CarouselContent className="-ml-4">
+              {professionals.map((p) => (
+                <CarouselItem key={p.title} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+                  <div className="relative rounded-2xl overflow-hidden group h-[420px] shadow-lg border border-border">
+                    <img
+                      src={p.image}
+                      alt={`Profissional de ${p.title}`}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${p.color} via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                      <div className="flex items-center gap-2 mb-2">
+                        <p.icon className="w-5 h-5" />
+                        <h3 className="text-xl font-display font-bold">{p.title}</h3>
+                      </div>
+                      <p className="text-sm text-white/85 leading-relaxed">{p.description}</p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
 
         {/* Extra support */}
