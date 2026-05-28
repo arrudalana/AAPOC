@@ -1,4 +1,4 @@
-import { Brain, Stethoscope, Scale, Smile } from "lucide-react";
+import { Brain, Stethoscope, Scale, Smile, Users, Apple } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -25,12 +25,28 @@ const professionals = [
     color: "from-primary/80 to-primary/40",
   },
   {
+    icon: Apple, // Novo serviço
+    title: "Nutrição",
+    description:
+      "Orientação nutricional personalizada para auxiliar na manutenção da saúde e imunidade durante o tratamento.",
+    image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&h=700&fit=crop",
+    color: "from-hope/80 to-hope/40",
+  },
+  {
     icon: Smile,
     title: "Odontologia",
     description:
       "Cuidados odontológicos essenciais para pacientes em tratamento quimioterápico e radioterápico.",
     image: "https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?w=600&h=700&fit=crop",
     color: "from-secondary/80 to-secondary/40",
+  },
+  {
+    icon: Users, // Novo serviço (Representando a Constelação Familiar/Grupo)
+    title: "Constelação",
+    description:
+      "Terapia sistêmica para auxiliar na compreensão de dinâmicas familiares e fortalecimento emocional.",
+    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&h=700&fit=crop",
+    color: "from-primary/80 to-primary/40",
   },
   {
     icon: Scale,
@@ -40,6 +56,7 @@ const professionals = [
     image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&h=700&fit=crop",
     color: "from-accent/80 to-accent/40",
   },
+
 ];
 
 const ServicesSection = () => {
